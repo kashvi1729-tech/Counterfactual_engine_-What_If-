@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, RotateCcw } from "lucide-react";
 import ScenarioCard from "./ScenarioCard";
+import ProbabilityDistribution from "./ProbabilityDistribution";
+import TimelineVisualization from "./TimelineVisualization";
 import type { SimulationResult } from "@/data/mockScenarios";
 
 interface SimulationResultsProps {
@@ -50,6 +52,12 @@ const SimulationResults = ({ result, onReset }: SimulationResultsProps) => {
         {result.scenarios.map((scenario, i) => (
           <ScenarioCard key={scenario.type} scenario={scenario} index={i} />
         ))}
+      </div>
+
+      {/* Visualizations */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
+        <ProbabilityDistribution scenarios={result.scenarios} />
+        <TimelineVisualization scenarios={result.scenarios} />
       </div>
 
       <motion.p
