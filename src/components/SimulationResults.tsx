@@ -54,6 +54,12 @@ const SimulationResults = ({ result, onReset }: SimulationResultsProps) => {
         ))}
       </div>
 
+      {/* Visualizations */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
+        <ProbabilityDistribution scenarios={result.scenarios} />
+        <TimelineVisualization scenarios={result.scenarios} />
+      </div>
+
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
