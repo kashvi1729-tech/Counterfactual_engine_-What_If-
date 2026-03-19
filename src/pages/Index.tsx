@@ -1,22 +1,40 @@
 import { useState, useCallback } from "react";
+import { toast } from "sonner";
 import DecisionInput from "@/components/DecisionInput";
 import SimulationResults from "@/components/SimulationResults";
-import { mockResults, type SimulationResult } from "@/data/mockScenarios";
+import type { SimulationResult } from "@/data/mockScenarios";
+import { supabase } from "@/integrations/supabase/client";
 
 const Index = () => {
   const [result, setResult] = useState<SimulationResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = useCallback((question: string) => {
+  const handleSubmit = useCallback(async (question: string) => {
     setIsLoading(true);
-    // Simulate AI processing delay
-    setTimeout(() => {
-      setResult({
-        ...mockResults.default,
-        question,
+    try {
+      const { data, error } = await supabase.functions.invoke("simulate-decision", {
+        body: { question },
       });
+
+      if (error) {
+        throw new Error(error.message || "Failed to simulate");
+      }
+
+      if (data?.error) {
+        toast.error(data.error);
+        return;
+      }
+
+      setResult({
+        question: data.question,
+        scenarios: data.scenarios,
+      });
+    } catch (e) {
+      console.error(e);
+      toast.error("Failed to generate simulation. Please try again.");
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   }, []);
 
   const handleReset = useCallback(() => {
@@ -25,7 +43,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {/* Subtle grid overlay */}
       <div
         className="fixed inset-0 pointer-events-none opacity-[0.03]"
         style={{
