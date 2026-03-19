@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
-import { LogIn, LogOut, User } from "lucide-react";
+import { LogIn, LogOut, User, ArrowLeftRight } from "lucide-react";
 import DecisionInput from "@/components/DecisionInput";
 import SimulationResults from "@/components/SimulationResults";
 import HistoryPanel from "@/components/HistoryPanel";
