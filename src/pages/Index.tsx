@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
-import { LogIn, LogOut, User } from "lucide-react";
+import { LogIn, LogOut, User, ArrowLeftRight } from "lucide-react";
 import DecisionInput from "@/components/DecisionInput";
 import SimulationResults from "@/components/SimulationResults";
 import HistoryPanel from "@/components/HistoryPanel";
@@ -76,7 +76,15 @@ const Index = () => {
       />
 
       {/* Auth bar */}
-      <div className="relative z-30 flex items-center justify-end gap-3 px-5 pt-4">
+      <div className="relative z-30 flex items-center justify-between px-5 pt-4">
+        <Link
+          to="/compare"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-card/80 text-xs font-display text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all"
+        >
+          <ArrowLeftRight className="w-3 h-3" />
+          Compare
+        </Link>
+        <div className="flex items-center gap-3">
         {user ? (
           <>
             <span className="text-[10px] font-display text-muted-foreground flex items-center gap-1">
@@ -100,6 +108,7 @@ const Index = () => {
             Sign in to save history
           </Link>
         )}
+        </div>
       </div>
 
       {/* History panel */}
