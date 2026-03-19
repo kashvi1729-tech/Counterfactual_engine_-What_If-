@@ -108,6 +108,7 @@ const Index = () => {
             Sign in to save history
           </Link>
         )}
+        </div>
       </div>
 
       {/* History panel */}
