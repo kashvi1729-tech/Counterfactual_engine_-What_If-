@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, RotateCcw } from "lucide-react";
 import ScenarioCard from "./ScenarioCard";
+import ProbabilityDistribution from "./ProbabilityDistribution";
+import TimelineVisualization from "./TimelineVisualization";
 import type { SimulationResult } from "@/data/mockScenarios";
 
 interface SimulationResultsProps {
