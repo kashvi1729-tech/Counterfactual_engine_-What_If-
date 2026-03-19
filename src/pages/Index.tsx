@@ -79,10 +79,10 @@ const Index = () => {
       <div className="relative z-30 flex items-center justify-between px-5 pt-4">
         <Link
           to="/compare"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-card/80 text-xs font-display text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-lg border border-primary/40 bg-primary/10 text-sm font-display font-semibold text-primary hover:bg-primary/20 hover:border-primary/60 transition-all"
         >
-          <ArrowLeftRight className="w-3 h-3" />
-          Compare
+          <ArrowLeftRight className="w-4 h-4" />
+          Compare Paths
         </Link>
         <div className="flex items-center gap-3">
         {user ? (
